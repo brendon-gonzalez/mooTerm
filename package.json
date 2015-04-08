@@ -1,0 +1,11 @@
+{
+  "name": "mooTerm",
+  "version": "0.0.1",
+  "description": "Let this cow talk to you when you open up a new terminal window",
+  "authors": "Brendon Gonzalez",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "cowsay": "^1.0.3",
+    "request": "^2.55.0"
+  }
+}
