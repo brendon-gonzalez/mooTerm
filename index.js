@@ -1,20 +1,19 @@
 var request = require('request');
-var cheerio = require('cheerio');
 var cowsay = require('cowsay');
 request({
-  url: 'http://www.randomtriviagenerator.com/entertainment.php'
+  url: 'http://159.203.60.127/questions?category=entertainment&limit=1&page=1',
+  json: true,
 }, function(e, r, b) {
-  var $ = cheerio.load(b);
-  var row = $('table tr').eq(1).find('[align="left"]');
+
   var cows  = ['vader', 'moofasa', 'default', 'small', 'moose', 'daemon', 'dragon'];
   var eyes  = ['XX', '@@', '><', 'Oo', '^^'];
 
-  if (e || r.statusCode !== 200 || !row.length ) {
+  if (e || r.statusCode !== 200 || !b.question ) {
     question = 'What happened to your request for facts?'
     answer = 'It failed';
   } else {
-    question = row.first().text();
-    answer = row.eq(1).text();
+    question = b.question;
+    answer = b.answer;
   }
 
   console.log('Prophet Moohammad says:\n', cowsay.say({
